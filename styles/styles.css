@@ -1,3 +1,15 @@
 .indent {
     text-indent: 50px;
 }
+
+.card{
+    width: 18rem;
+}
+
+.customWidth{
+    width: 36rem;
+}
+
+.buttonMargin{
+    margin-left: 90%;
+}

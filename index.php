@@ -1,4 +1,10 @@
 <?php
+//Dmytro Boichuk
+//4/20/2020
+// Dating Website
+
+
+//to display errors
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
@@ -14,8 +20,13 @@ $f3->route('GET /', function (){
     echo $view->render("views/home.html");
 });
 
+$f3->route('GET /personalInfo', function (){
+    $view = new Template();
+    echo $view->render("views/personal.html");
+});
 
 
 
 
+// to run fat free
 $f3->run();
