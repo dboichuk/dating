@@ -6,7 +6,7 @@
 
 </head>
 <body>
-<div class="container border">
+<div class="container border rounded">
 
     <include href="include/navbar.htm"></include>
     <p></p>
@@ -14,28 +14,28 @@
         <div class="col">
             <div class="container">
                 <div class="row border rounded-top">
-                    <p>Name: {{@SESSION.fname}} {{@SESSION.lname}}</p>
+                    <p class="my-2 ml-2">Name: {{@SESSION.fname}} {{@SESSION.lname}}</p>
                 </div>
                 <div class="row border">
-                    <p>Gender: {{ucfirst(@SESSION.gender)}}</p>
+                    <p class="my-2 ml-2">Gender: {{ucfirst(@SESSION.gender)}}</p>
                 </div>
                 <div class="row border">
-                    <p>Age: {{@SESSION.age}}</p>
+                    <p class="my-2 ml-2">Age: {{@SESSION.age}}</p>
                 </div>
                 <div class="row border">
-                    <p>Phone: {{@SESSION.phone}}</p>
+                    <p class="my-2 ml-2">Phone: {{@SESSION.phone}}</p>
                 </div>
                 <div class="row border">
-                    <p>Email: {{@SESSION.email}}</p>
+                    <p class="my-2 ml-2">Email: {{@SESSION.email}}</p>
                 </div>
                 <div class="row border">
-                    <p>State: {{ucfirst(@SESSION.state)}}</p>
+                    <p class="my-2 ml-2">State: {{ucfirst(@SESSION.state)}}</p>
                 </div>
                 <div class="row border">
-                    <p>Seeking: {{ucfirst(@SESSION.seeking)}}</p>
+                    <p class="my-2 ml-2">Seeking: {{ucfirst(@SESSION.seeking)}}</p>
                 </div>
                 <div class="row border rounded-bottom">
-                    <p>Interests: <repeat group="{{@SESSION.interests}}" value="{{@item}}">{{@item}} </repeat></p>
+                    <p class="my-2 ml-2">Interests: <repeat group="{{@SESSION.interests}}" value="{{@item}}">{{@item}} </repeat></p>
                 </div>
             </div>
         </div>
@@ -43,9 +43,9 @@
 
         <div class="col">
 
-            <img src="images/unnamed.png" alt="anonymous pearson" class="w-75">
+            <img src="images/unnamed.png" alt="anonymous pearson" class="w-75 rounded">
             <p></p>
-            <p>Biography</p>
+            <h4>Biography</h4>
             <p>{{@SESSION.bio}}</p>
         </div>
 
