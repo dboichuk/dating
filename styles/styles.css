@@ -3,7 +3,8 @@
 }
 
 .card{
-    width: 18rem;
+    width: 20rem;
+    background-color: lightgray;
 }
 
 .customWidth{
