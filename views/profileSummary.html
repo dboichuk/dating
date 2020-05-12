@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include href="include/header.htm"></include>
+    <title>JustDate</title>
+
+</head>
+<body>
+<div class="container border">
+
+    <include href="include/navbar.htm"></include>
+    <p></p>
+    <div class="row">
+        <div class="col">
+            <div class="container">
+                <div class="row border rounded-top">
+                    <p>Name: {{@SESSION.fname}} {{@SESSION.lname}}</p>
+                </div>
+                <div class="row border">
+                    <p>Gender: {{ucfirst(@SESSION.gender)}}</p>
+                </div>
+                <div class="row border">
+                    <p>Age: {{@SESSION.age}}</p>
+                </div>
+                <div class="row border">
+                    <p>Phone: {{@SESSION.phone}}</p>
+                </div>
+                <div class="row border">
+                    <p>Email: {{@SESSION.email}}</p>
+                </div>
+                <div class="row border">
+                    <p>State: {{ucfirst(@SESSION.state)}}</p>
+                </div>
+                <div class="row border">
+                    <p>Seeking: {{ucfirst(@SESSION.seeking)}}</p>
+                </div>
+                <div class="row border rounded-bottom">
+                    <p>Interests: <repeat group="{{@SESSION.interests}}" value="{{@item}}">{{@item}} </repeat></p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col">
+
+            <img src="images/unnamed.png" alt="anonymous pearson" class="w-75">
+            <p></p>
+            <p>Biography</p>
+            <p>{{@SESSION.bio}}</p>
+        </div>
+
+
+    </div>
+    <div class="text-center">
+        <button type="submit"  class="btn btn-primary">Contact Me!</button>
+    </div>
+    <p></p>
+
+</div>
+
+<include href="include/footer.htm"></include>
+</body>
+</html>
