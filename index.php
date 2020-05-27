@@ -11,6 +11,7 @@ session_start();
 
 // require the autoload file
 require_once("vendor/autoload.php");
+require_once ("model/validate.php");
 
 //instantiate the F3 Base class
 $f3=Base::instance();
