@@ -68,20 +68,30 @@ $f3->route('GET|POST /personalInfo', function ($f3){
 $f3->route('GET|POST /profileInfo', function ($f3){
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if(!validEmail($_POST['email'])){
+            $f3->set("errors['email']","Please provide valid email.");
+        }
+        else{
+            $_SESSION['email']=$_POST['email'];
+            $_SESSION['state']=$_POST['state'];
+            $_SESSION['seeking']=$_POST['seeking'];
+            $_SESSION['bio']=$_POST['bio'];
+
+            $f3->reroute('interests');
+        }
 
 
 
 
-        $_SESSION['email']=$_POST['email'];
-        $_SESSION['state']=$_POST['state'];
-        $_SESSION['seeking']=$_POST['seeking'];
-        $_SESSION['bio']=$_POST['bio'];
-
-        $f3->reroute('interests');
     }
 
-
-    
+    $f3->set('email', $_POST['email']);
+    $f3->set('state', $_POST['state']);
+    $f3->set('bio', $_POST['bio']);
+    $f3->set('seeking',array("male","female"));
+    $f3->set('selectedSeeking', $_POST['seeking']);
+    $f3->set('states',array("Please Select", "Washington","Oregon","Arizona"));
+    $f3->set("selectedState",$_POST['state']);
     $view = new Template();
     echo $view->render("views/profile.html");
 });
