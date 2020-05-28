@@ -101,12 +101,50 @@ $f3->route('GET|POST /interests', function ($f3){
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+        if(!validIndoor($_POST['optionsIn'])){
+            $f3->set("errors['indoor']","Please provide valid indoor activities.");
+        }
+        if(!validOutdoor($_POST['optionsOut'])){
+            $f3->set("errors['outdoor']","Please provide valid outdoor activities.");
+        }
 
-        $_SESSION['interests']=$_POST['options'];
+        if (empty($f3->get('errors'))) {
+            if(is_array($_POST['optionsOut'])&&is_array($_POST['optionsIn'])) {
+                $_SESSION['interests'] = array_merge($_POST['optionsIn'], $_POST['optionsOut']);
+                $f3->reroute("profileSummary");
+            }
+            else{
+                if(is_array($_POST['optionsOut'])){
+                    $_SESSION['interests'] = $_POST['optionsOut'];
+                    $f3->reroute("profileSummary");
+                }
+                else{
+                    $_SESSION['interests'] = $_POST['optionsIn'];
+                    $f3->reroute("profileSummary");
+                }
+            }
 
 
+        }
 
-        $f3->reroute("profileSummary");
+
+    }
+
+    $f3->set('outdoor', array(array("hiking","walking"), array("biking", "climbing"),array("swimming"), array("collecting")));
+    $f3->set('indoor',array(array("tv","puzzles"),array("movies","reading"), array("cooking", "playing cards"),array("board games", "video games")));
+
+    if(isset($_POST['optionsIn'])) {
+        $f3->set('selectedIn', $_POST['optionsIn']);
+    }
+    else{
+        $f3->set('selectedIn', array("empty"));
+    }
+
+    if(isset($_POST['optionsOut'])) {
+        $f3->set('selectedOut', $_POST['optionsOut']);
+    }
+    else{
+        $f3->set('selectedOut', array("empty"));
     }
     $view = new Template();
     echo $view->render("views/interests.html");

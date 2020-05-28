@@ -22,47 +22,22 @@ this page will find out interests of the user
     <hr class="my-4">
     <form class="form-group" method="post">
         <p><strong>In-door Interests</strong></p>
+        <span class="err">
+                        <check if="{{ isset(@errors['indoor']) }}">
+                            {{ @errors['indoor'] }}
+                        </check>
+                    </span>
         <div class="row">
+            <repeat group="{{ @indoor }}" value="{{ @indoorArray }}">
             <div class="col">
+                <repeat group="{{ @indoorArray }}" value="{{ @activity }}">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="tv" name="options[]" value="tv">
-                    <label class="custom-control-label" for="tv">tv</label>
+                    <input type="checkbox" class="custom-control-input" id="{{@activity}}" name="optionsIn[]" value="{{@activity}}" <check if="{{in_array(@activity,@selectedIn)}}">checked</check>    >
+                    <label class="custom-control-label" for="{{@activity}}">{{@activity}}</label>
                 </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="puzzles" name="options[]" value="puzzles">
-                    <label class="custom-control-label" for="puzzles">puzzles</label>
-                </div>
+                </repeat>
             </div>
-            <div class="col">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="movies" name="options[]" value="movies">
-                    <label class="custom-control-label" for="movies">movies</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="reading" name="options[]" value="reading">
-                    <label class="custom-control-label" for="reading">reading</label>
-                </div>
-            </div>
-            <div class="col">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="cooking" name="options[]" value="cooking">
-                    <label class="custom-control-label" for="cooking">cooking</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="playingcards" name="options[]" value="playing cards">
-                    <label class="custom-control-label" for="playingcards">playing cards</label>
-                </div>
-            </div>
-            <div class="col">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="boardgames" name="options[]" value="board games">
-                    <label class="custom-control-label" for="boardgames">board games</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="videogames" name="options[]" value="video games">
-                    <label class="custom-control-label" for="videogames">video games</label>
-                </div>
-            </div>
+            </repeat>
 
         </div>
         <p></p>
@@ -71,39 +46,22 @@ this page will find out interests of the user
 
 
         <p><strong>Out-door Interests</strong></p>
+        <span class="err">
+                        <check if="{{ isset(@errors['outdoor']) }}">
+                            {{ @errors['outdoor'] }}
+                        </check>
+                    </span>
         <div class="row">
-            <div class="col">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="hiking" name="options[]" value="hiking">
-                    <label class="custom-control-label" for="hiking">hiking</label>
+            <repeat group="{{ @outdoor }}" value="{{ @outdoorArray }}">
+                <div class="col">
+                    <repeat group="{{ @outdoorArray }}" value="{{ @outactivity }}">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="{{@outactivity}}" name="optionsOut[]" value="{{@outactivity}}"  <check if="{{in_array(@outactivity,@selectedOut)}}">checked</check> >
+                            <label class="custom-control-label" for="{{@outactivity}}">{{@outactivity}}</label>
+                        </div>
+                    </repeat>
                 </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="walking" name="options[]" value="walking">
-                    <label class="custom-control-label" for="walking">walking</label>
-                </div>
-            </div>
-            <div class="col">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="biking" name="options[]" value="biking">
-                    <label class="custom-control-label" for="biking">biking</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="climbing" name="options[]" value="climbing">
-                    <label class="custom-control-label" for="climbing">climbing</label>
-                </div>
-            </div>
-            <div class="col">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="swimming" name="options[]" value="swimming">
-                    <label class="custom-control-label" for="swimming">swimming</label>
-                </div>
-            </div>
-            <div class="col">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="collecting" name="options[]" value="collecting">
-                    <label class="custom-control-label" for="collecting">collecting</label>
-                </div>
-            </div>
+            </repeat>
 
 
         </div>

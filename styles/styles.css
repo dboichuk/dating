@@ -14,3 +14,6 @@
 .buttonMargin{
     margin-left: 90%;
 }
+.err{
+    color: darkred;
+}

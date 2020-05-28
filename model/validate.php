@@ -14,20 +14,26 @@ function validEmail($email){
 }
 function validOutdoor($selected){
     $outdoor=array("hiking","walking", "biking", "climbing","swimming", "collecting");
-    foreach ($selected as $item){
-        if(!in_array($item,$outdoor)){
-            return false;
+    if (is_array($selected) || is_object($selected)) {
+        foreach ($selected as $item) {
+            if (!in_array($item, $outdoor)) {
+                return false;
+            }
         }
+
     }
     return true;
 }
 function validIndoor($selected){
-    $indoor=array("tv","puzzles","movies","reading", "cooking", "playing cards","board games", "video games");
 
-    foreach ($selected as $item){
-        if(!in_array($item,$indoor)){
-            return false;
+    $indoor=array("tv","puzzles","movies","reading", "cooking", "playing cards","board games", "video games");
+    if (is_array($selected) || is_object($selected)) {
+        foreach ($selected as $item) {
+            if (!in_array($item, $indoor)) {
+                return false;
+            }
         }
+
     }
     return true;
 }
