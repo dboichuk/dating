@@ -29,38 +29,61 @@ this page will find out personal info about the user
 
         <div class="form-group">
             <label for="fname"><strong>First Name</strong></label>
-            <input type="text" class="form-control customWidth" id="fname" name="fname" required>
+            <input type="text" class="form-control customWidth" id="fname" name="fname" value="{{@fname}}" required>
+            <span class="err">
+                        <check if="{{ isset(@errors['fname']) }}">
+                            {{ @errors['fname'] }}
+                        </check>
+                    </span>
         </div>
 
         <div class="form-group">
             <label for="lname"><strong>Last Name</strong></label>
-            <input type="text" class="form-control customWidth" id="lname" name="lname" required>
+            <input type="text" class="form-control customWidth" id="lname" name="lname" value="{{@lname}}" required>
+            <span class="err">
+                        <check if="{{ isset(@errors['lname']) }}">
+                            {{ @errors['lname'] }}
+                        </check>
+                    </span>
         </div>
 
         <div class="form-group">
             <label for="age"><strong>Age</strong></label>
-            <input type="text" class="form-control customWidth" id="age" name="age" required>
+            <input type="text" class="form-control customWidth" id="age" name="age" value="{{@age}}" required>
+            <span class="err">
+                        <check if="{{ isset(@errors['age']) }}">
+                            {{ @errors['age'] }}
+                        </check>
+                    </span>
         </div>
 
         <p><strong>Gender</strong></p>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="gender" id="gender" value="male">
-            <label class="form-check-label" for="gender">
-                Male
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="gender"  id="gender2" value="female" >
-            <label class="form-check-label" for="gender2">
-                Female
-            </label>
-        </div>
+
+            <repeat group="{{ @genders }}" value="{{ @gender }}">
+                <div class="form-check form-check-inline">
+                <label><input type="radio"
+                              name="gender"
+                              id="{{ @gender }}"
+                              value="{{ @gender }}"
+                    <check if="{{ @gender == @selectedGender }}" >
+                        checked="checked"
+                    </check>
+                    > {{ ucfirst(@gender) }}
+                    </input></label><br></div>
+            </repeat>
+
+
 
         <p></p>
 
         <div class="form-group">
             <label for="phone"><strong>Phone Number</strong></label>
-            <input type="text" class="form-control customWidth" id="phone" name="phone" required>
+            <input type="text" class="form-control customWidth" id="phone" name="phone" value="{{@phone}}" required>
+            <span class="err">
+                        <check if="{{ isset(@errors['phone']) }}">
+                            {{ @errors['phone'] }}
+                        </check>
+                    </span>
         </div>
 
 
