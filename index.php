@@ -7,11 +7,12 @@
 //to display errors
 ini_set('display_errors',1);
 error_reporting(E_ALL);
-session_start();
+
 
 // require the autoload file
 require_once("vendor/autoload.php");
 require_once ("model/validate.php");
+session_start();
 
 //instantiate the F3 Base class
 $f3=Base::instance();
@@ -42,11 +43,15 @@ $f3->route('GET|POST /personalInfo', function ($f3){
 
 
         if (empty($f3->get('errors'))) {
-            $_SESSION['fname'] = $_POST['fname'];
-            $_SESSION['lname'] = $_POST['lname'];
-            $_SESSION['age'] = $_POST['age'];
-            $_SESSION['gender'] = $_POST['gender'];
-            $_SESSION['phone'] = $_POST['phone'];
+            if(isset($_POST['premium'])){
+                $_SESSION['premiumMember']=new PremiumMember($_POST['fname'],$_POST['lname'],
+                    $_POST['age'],$_POST['gender'],$_POST['phone']);
+            }
+            else{
+                $_SESSION['member']=new Member($_POST['fname'],$_POST['lname'],
+                    $_POST['age'],$_POST['gender'],$_POST['phone']);
+            }
+
             $f3->reroute('profileInfo');
         }
 
