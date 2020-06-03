@@ -18,30 +18,61 @@ this is summary of the profile
     <div class="row">
         <div class="col">
             <div class="container">
-                <div class="row border rounded-top">
-                    <p class="my-2 ml-2">Name: {{@SESSION.fname}} {{@SESSION.lname}}</p>
-                </div>
-                <div class="row border">
-                    <p class="my-2 ml-2">Gender: {{ucfirst(@SESSION.gender)}}</p>
-                </div>
-                <div class="row border">
-                    <p class="my-2 ml-2">Age: {{@SESSION.age}}</p>
-                </div>
-                <div class="row border">
-                    <p class="my-2 ml-2">Phone: {{@SESSION.phone}}</p>
-                </div>
-                <div class="row border">
-                    <p class="my-2 ml-2">Email: {{@SESSION.email}}</p>
-                </div>
-                <div class="row border">
-                    <p class="my-2 ml-2">State: {{ucfirst(@SESSION.state)}}</p>
-                </div>
-                <div class="row border">
-                    <p class="my-2 ml-2">Seeking: {{ucfirst(@SESSION.seeking)}}</p>
-                </div>
-                <div class="row border rounded-bottom">
-                    <p class="my-2 ml-2">Interests: <repeat group="{{@SESSION.interests}}" value="{{@item}}">{{@item}} </repeat></p>
-                </div>
+
+                <check if="{{isset(@SESSION.premiumMember)}}">
+                    <true>
+                        <div class="row border rounded-top">
+                            <p class="my-2 ml-2">Name: {{@SESSION.premiumMember->getFname()}} {{@SESSION.premiumMember->getLname()}}</p>
+                        </div>
+                        <div class="row border">
+                            <p class="my-2 ml-2">Gender: {{ucfirst(@SESSION.premiumMember->getGender())}}</p>
+                        </div>
+                        <div class="row border">
+                            <p class="my-2 ml-2">Age: {{@SESSION.premiumMember->getAge()}}</p>
+                        </div>
+                        <div class="row border">
+                            <p class="my-2 ml-2">Phone: {{@SESSION.premiumMember->getPhone()}}</p>
+                        </div>
+                        <div class="row border">
+                            <p class="my-2 ml-2">Email: {{@SESSION.premiumMember->getEmail()}}</p>
+                        </div>
+                        <div class="row border">
+                            <p class="my-2 ml-2">State: {{ucfirst(@SESSION.premiumMember->getState())}}</p>
+                        </div>
+                        <div class="row border">
+                            <p class="my-2 ml-2">Seeking: {{ucfirst(@SESSION.premiumMember->getSeeking())}}</p>
+                        </div>
+                        <div class="row border rounded-bottom">
+                            <p class="my-2 ml-2">Interests: <repeat group="{{@SESSION.premiumMember->getInDoorInterests()}}" value="{{@item}}">{{@item}}, </repeat>
+                                <repeat group="{{@SESSION.premiumMember->getOutDoorInterests()}}" value="{{@item}}">{{@item}}, </repeat>
+                            </p>
+                        </div>
+                    </true>
+                    <false>
+                        <div class="row border rounded-top">
+                            <p class="my-2 ml-2">Name: {{@SESSION.member->getFname()}} {{@SESSION.member->getLname()}}</p>
+                        </div>
+                        <div class="row border">
+                            <p class="my-2 ml-2">Gender: {{ucfirst(@SESSION.member->getGender())}}</p>
+                        </div>
+                        <div class="row border">
+                            <p class="my-2 ml-2">Age: {{@SESSION.member->getAge()}}</p>
+                        </div>
+                        <div class="row border">
+                            <p class="my-2 ml-2">Phone: {{@SESSION.member->getPhone()}}</p>
+                        </div>
+                        <div class="row border">
+                            <p class="my-2 ml-2">Email: {{@SESSION.member->getEmail()}}</p>
+                        </div>
+                        <div class="row border">
+                            <p class="my-2 ml-2">State: {{ucfirst(@SESSION.member->getState())}}</p>
+                        </div>
+                        <div class="row border rounded-bottom">
+                            <p class="my-2 ml-2">Seeking: {{ucfirst(@SESSION.member->getSeeking())}}</p>
+                        </div>
+
+                    </false>
+                </check>
             </div>
         </div>
 

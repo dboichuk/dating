@@ -1,5 +1,11 @@
 <?php
-class PremiumMember extends Member {
+
+/**
+ * Class PremiumMember
+ * THis is class for Premium Members of the website
+ */
+class PremiumMember extends Member
+{
 
     private $_inDoorInterests;
     private $_outDoorInterests;
